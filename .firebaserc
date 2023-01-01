@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "natafood": {
+      "hosting": {
+        "natafood": [
+          "natafood"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "natafood"
+  }
+}
