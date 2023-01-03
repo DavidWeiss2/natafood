@@ -7,16 +7,16 @@ import { filter, share, shareReplay } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  _auth = inject(Auth)
-  public user = authState(this._auth).pipe(
+  auth = inject(Auth)
+  public user = authState(this.auth).pipe(
     filter(user => {
-      if (!user) signInAnonymously(this._auth);
+      if (!user) signInAnonymously(this.auth);
       return !!user
     }),
     traceUntilFirst('auth'),
     share({ resetOnRefCountZero: false }),
     shareReplay(1));
 
-  public login = () => signInWithPopup(this._auth, new GoogleAuthProvider());
-  public logout = () => signOut(this._auth);
+  public login = () => signInWithPopup(this.auth, new GoogleAuthProvider());
+  public logout = () => signOut(this.auth);
 }
